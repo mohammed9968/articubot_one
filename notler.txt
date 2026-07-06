@@ -1,0 +1,4 @@
+rviz2 -d src/my_bot/config/viwe_robo_1.rviz 
+
+
+ros2 run joint_state_publisher_gui joint_state_publisher_gui 
