@@ -1,3 +1,10 @@
+
+
+git add .
+git commit -m "Describe what you changed"
+git push
+
+
 rviz2 -d src/my_bot/config/viwe_robo_1.rviz 
 
 
