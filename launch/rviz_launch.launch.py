@@ -18,12 +18,12 @@ def generate_launch_description():
     rviz_config = os.path.join(
         pkg_share,
         "rviz",
-        "robot.rviz"
+        "robo.rviz"
     )
 
-    rviz2 =Node (
+    rviz_node =Node (
         package="rviz2",
-        exec_name="rviz2",
+        executable="rviz2",
         arguments=[
             "-d", rviz_config
         ],
@@ -32,5 +32,5 @@ def generate_launch_description():
 
 
     return  LaunchDescription([
-        rviz2
+        rviz_node
     ])
