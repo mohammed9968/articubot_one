@@ -31,8 +31,21 @@ def generate_launch_description():
             )
         ),
         launch_arguments={
-            "use_sim_time": "true"
+            "use_sim_time": "true",
+            'use_ros2_control': 'true'
         }.items()
+    )
+
+    world = os.path.join(
+        pkg_share,
+        "worlds",
+        "house.world"
+    )
+
+    gazebo_params_file= os.path.join(
+        pkg_share,
+        "config",
+        "gazebo_params.yaml"
     )
 
     gazebo = IncludeLaunchDescription(
@@ -42,7 +55,11 @@ def generate_launch_description():
                 "launch",
                 "gazebo.launch.py"
             )
-        )
+        ),
+        launch_arguments={
+            "world":world,
+            "extra_gazebo_args": "--ros-args --params-file " + gazebo_params_file 
+        }.items()
     )
 
     spawn_robot = Node(
@@ -56,11 +73,28 @@ def generate_launch_description():
     )
 
 
+    diff_drive_spawner =Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+            "diff_cont",
+        ],
+    )
+
+    joint_broad_spawner =Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_broad"],
+    )
+
+
 
     
 
     return LaunchDescription([
         rsp,
         gazebo,
-        spawn_robot
+        spawn_robot,
+        diff_drive_spawner,
+        joint_broad_spawner,
     ])
