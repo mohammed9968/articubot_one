@@ -32,8 +32,14 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+# ================= Python Nodes =================
+install(PROGRAMS
+  scripts/keyboardController.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 install(
-  DIRECTORY config description launch worlds rviz
+  DIRECTORY config description launch worlds rviz 
   DESTINATION share/${PROJECT_NAME}
 )
 
