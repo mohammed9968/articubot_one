@@ -21,13 +21,15 @@ def generate_launch_description():
         "robo.rviz"
     )
 
-    rviz_node =Node (
+    rviz_node = Node(
         package="rviz2",
         executable="rviz2",
         arguments=[
-            "-d", rviz_config
+            "-d", rviz_config,
+            "--ros-args",
+            "-p", "use_sim_time:=true"
         ],
-        output = "screen"
+        output="screen"
     )
 
 

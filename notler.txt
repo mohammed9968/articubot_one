@@ -9,3 +9,12 @@ rviz2 -d src/my_bot/config/viwe_robo_1.rviz
 
 
 ros2 run joint_state_publisher_gui joint_state_publisher_gui 
+
+
+
+1-------------------
+ros2 launch nav2_bringup localization_launch.py map:=/home/emir/robo_ws/map_save.yaml use_sim_time:=true
+
+ros2 launch nav2_bringup navigation_launch.py params_file:=src/my_bot/config/nav2_params.yaml use_sim_time:=true
+
+---------------------------
